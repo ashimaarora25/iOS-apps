@@ -1,0 +1,37 @@
+//
+//  ContentView.swift
+//  emojiLover
+//
+//  Created by ashima arora on 11/28/24.
+//
+
+import SwiftUI
+
+enum Emojis: String, CaseIterable{
+    case 😆, 😎, 🤷🏻‍, 🥳
+}
+
+struct ContentView: View {
+    @State var selection:Emojis = .🥳
+    var body: some View {
+        NavigationView{
+            VStack{
+                Text(selection.rawValue)
+                    .font(.system(size:150))
+                Picker("Select Emoji",selection:$selection){
+                    //Define all options available in the Enum
+                    ForEach(Emojis.allCases,id:\.self){
+                        emoji in Text(emoji.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .navigationTitle("Emojis Lover!")
+            .padding()
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
