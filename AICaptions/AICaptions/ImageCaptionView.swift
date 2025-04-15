@@ -11,24 +11,28 @@ import PhotosUI
 
 
 struct ImageCaptionView: View {
-    @State private var caption = ""
+    @State private var generatedCaption: String = ""
     @State private var selectedItem: PhotosPickerItem?=nil
     @State private var selectedImage: UIImage? = nil
+    @State private var isLoading = false
+    
+    let openAI = OpenAIService()
     var body: some View {
-        NavigationStack{
-            VStack {
+        NavigationView{
+            VStack (spacing:20){
                 if let selectedImage{
                     Image(uiImage: selectedImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 250)
+                        .cornerRadius(12)
                 }
                 else{
                     Text("No Image Selected")
                 }
                 //PhotoPicker
                 PhotosPicker(selection: $selectedItem, matching: .images){
-                    Text("Select an Image")
+                    Text("Choose Image")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
@@ -40,9 +44,31 @@ struct ImageCaptionView: View {
                             selectedImage = UIImage(data: data)
                         }
                     }})
+                if selectedImage != nil{
+                    Button(action:{
+                        isLoading = true
+                        generatedCaption = ""
+                        openAI.generateCaptionsFromImage(from: selectedImage) { caption in
+                            //completions callback function
+                            DispatchQueue.main.async{
+                                self.generatedCaption = caption
+                                self.isLoading = false
+                            }
+                            
+                        }
+                    }){
+                            //generate captions
+                            Text("Generate Captions")
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        
+                    }
+                }
             }
             .padding()
-            .navigationTitle("Captions.AI")
+            .navigationTitle("Image Input")
         }
 
     }

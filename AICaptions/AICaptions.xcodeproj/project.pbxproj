@@ -16,6 +16,7 @@
 		3E002E982D9D441900722B4E /* AICaptionsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002E972D9D441900722B4E /* AICaptionsUITestsLaunchTests.swift */; };
 		3E002EA52DA3E7EC00722B4E /* TextCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002EA42DA3E7EB00722B4E /* TextCaptionView.swift */; };
 		3E002EA72DA3E81300722B4E /* ImageCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002EA62DA3E81300722B4E /* ImageCaptionView.swift */; };
+		3E5464282DA7D51C0032BF2A /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5464272DA7D51C0032BF2A /* OpenAIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3E002E972D9D441900722B4E /* AICaptionsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICaptionsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3E002EA42DA3E7EB00722B4E /* TextCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCaptionView.swift; sourceTree = "<group>"; };
 		3E002EA62DA3E81300722B4E /* ImageCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptionView.swift; sourceTree = "<group>"; };
+		3E5464272DA7D51C0032BF2A /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				3E002E7A2D9D441700722B4E /* AICaptionsApp.swift */,
 				3E002E7C2D9D441700722B4E /* ContentView.swift */,
 				3E002EA62DA3E81300722B4E /* ImageCaptionView.swift */,
+				3E5464272DA7D51C0032BF2A /* OpenAIService.swift */,
 				3E002EA42DA3E7EB00722B4E /* TextCaptionView.swift */,
 				3E002E7E2D9D441800722B4E /* Assets.xcassets */,
 				3E002E802D9D441800722B4E /* Preview Content */,
@@ -265,6 +268,7 @@
 			files = (
 				3E002E7D2D9D441700722B4E /* ContentView.swift in Sources */,
 				3E002EA72DA3E81300722B4E /* ImageCaptionView.swift in Sources */,
+				3E5464282DA7D51C0032BF2A /* OpenAIService.swift in Sources */,
 				3E002E7B2D9D441700722B4E /* AICaptionsApp.swift in Sources */,
 				3E002EA52DA3E7EC00722B4E /* TextCaptionView.swift in Sources */,
 			);
