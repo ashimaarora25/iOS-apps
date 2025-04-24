@@ -30,7 +30,6 @@ struct TextCaptionView: View{
                     DispatchQueue.main.async{
                         self.generatedCaptions = captions
                         self.isLoading = false
-                        
                         if captions.isEmpty{
                             self.showNoCaptionsMessage = true
                         }

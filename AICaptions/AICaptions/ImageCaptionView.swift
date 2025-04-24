@@ -15,6 +15,7 @@ struct ImageCaptionView: View {
     @State private var selectedItem: PhotosPickerItem?=nil
     @State private var selectedImage: UIImage? = nil
     @State private var isLoading = false
+    @State private var showNoCaptionsMessage = false
     
     let openAI = OpenAIService()
     var body: some View {
@@ -44,15 +45,19 @@ struct ImageCaptionView: View {
                             selectedImage = UIImage(data: data)
                         }
                     }})
-                if selectedImage != nil{
+                if let selectedImage{
                     Button(action:{
                         isLoading = true
                         generatedCaption = ""
+                        
                         openAI.generateCaptionsFromImage(from: selectedImage) { caption in
                             //completions callback function
                             DispatchQueue.main.async{
                                 self.generatedCaption = caption
                                 self.isLoading = false
+                                if caption.isEmpty{
+                                    showNoCaptionsMessage = true
+                                }
                             }
                             
                         }
@@ -65,6 +70,15 @@ struct ImageCaptionView: View {
                                 .cornerRadius(10)
                         
                     }
+                    if isLoading{
+                        ProgressView("Generating...")
+                    }
+                    if showNoCaptionsMessage {
+                        Text("No captions found. Please try a different prompt.")
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    Text(caption)
                 }
             }
             .padding()
